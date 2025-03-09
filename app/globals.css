@@ -13,7 +13,7 @@
         --foreground: #171717; /* Dark text */
         --primary: #f4a900; /* Honey (Golden Yellow) */
         --secondary: #000000; /* Black */
-        --accent: #fff6de; /* Lighter Honey */
+        --accent: #fcdb80; /* Lighter Honey */
         --font-sans: var(--font-work-sans);
     }
 }
@@ -101,18 +101,18 @@
 
     .tag {
         @apply px-6 py-3 font-sans font-bold rounded-sm uppercase relative;
-        background-color: var(--secondary);
+        background-color: var(--accent);
 
         /* Triangle decorations */
         content: '';
-        position: absolute;
+        /* position: absolute; */
     }
 
     .tag::before {
         content: '';
         position: absolute;
-        top: 2px;
-        left: 2px;
+        top: 5px;
+        left: 5px;
         border-top: 10px solid black;
         border-right: 10px solid transparent;
     }
@@ -120,8 +120,8 @@
     .tag::after {
         content: '';
         position: absolute;
-        bottom: 2px;
-        right: 2px;
+        bottom: 5px;
+        right: 5px;
         border-bottom: 10px solid black;
         border-left: 10px solid transparent;
     }
@@ -201,6 +201,18 @@
     .search-btn {
         @apply size-[50px] rounded-full flex justify-center items-center;
         background-color: var(--secondary);
+    }
+    .view-container {
+        @apply flex justify-end items-center mt-5 fixed bottom-3 right-3;
+    }
+
+    .view-text {
+        @apply font-medium text-[16px]  px-4 py-2 rounded-lg capitalize;
+        background-color: var(--accent);
+    }
+    .category-tag {
+        @apply font-medium text-[16px] px-4 py-2 rounded-full;
+        background-color: var(--accent);
     }
 }
 .pattern {

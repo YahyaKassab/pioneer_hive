@@ -42,12 +42,14 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             </div>
             <Link href={`/startup/${_id}`}>
                 <p className="startup-card_desc">{description}</p>
-                <img
-                    src={image}
-                    alt="startup"
-                    className="startup-card_img"
-                    style={{ objectFit: 'cover', maxHeight: '200px', width: '100%' }}
-                />
+                {image ? (
+                    <Image
+                        src={image}
+                        alt="startup"
+                        className="startup-card_img"
+                        style={{ objectFit: 'cover', maxHeight: '200px', width: '100%' }}
+                    />
+                ) : null}
             </Link>
             <div className="flex-between gap-3 mt-5">
                 <Link href={`/?query=${category?.toLowerCase()}`}>
