@@ -2,10 +2,13 @@ import { auth } from '@/auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import AuthButtons from './AuthButtons'; // ✅ Import client-side component
+import AuthButtons from './AuthButtons';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/auth';
+// ✅ Import client-side component
 
 const Navbar = async () => {
-    const session = await auth(); // ✅ Server-side authentication check
+    const session = await getServerSession(authOptions);
 
     return (
         <header className="px-5 py-3 shadow-sm font-work-sans">

@@ -157,7 +157,7 @@ export type Author = {
   username?: string;
   email?: string;
   slug?: Slug;
-  imageUrl?: string;
+  image?: string;
   bio?: string;
 };
 

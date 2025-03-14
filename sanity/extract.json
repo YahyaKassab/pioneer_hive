@@ -850,7 +850,7 @@
         },
         "optional": true
       },
-      "imageUrl": {
+      "image": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

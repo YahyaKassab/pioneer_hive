@@ -7,7 +7,7 @@ export const STARTUP_QUERY =
     slug,
     _createdAt,
     author -> {
-      _id, name, slug, imageUrl, bio
+      _id, name, slug, image, bio
     }, 
     views, 
     description, 
@@ -21,7 +21,7 @@ export const STARTUP_BY_ID_QUERY = defineQuery(`*[_type == "startup" && _id == $
   slug, 
   _createdAt,
     author -> {
-      _id, name, username, slug, imageUrl, bio
+      _id, name, username, slug, image, bio
     }, 
     views, 
     description, 

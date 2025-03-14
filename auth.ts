@@ -1,18 +1,36 @@
-import NextAuth, { NextAuthConfig } from 'next-auth';
-import GitHub from 'next-auth/providers/github';
+import NextAuth from 'next-auth';
+import GithubProvider from 'next-auth/providers/github';
+import type { NextAuthOptions } from 'next-auth';
 
-export const authOptions: NextAuthConfig = {
+export const authOptions: NextAuthOptions = {
     providers: [
-        GitHub({
-            clientId: process.env.AUTH_GITHUB_ID as string,
-            clientSecret: process.env.AUTH_GITHUB_SECRET as string,
+        GithubProvider({
+            clientId: process.env.AUTH_GITHUB_ID!,
+            clientSecret: process.env.AUTH_GITHUB_SECRET!,
         }),
     ],
+    callbacks: {
+        session: ({ session, token }) => {
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    id: token.sub,
+                },
+            };
+        },
+        jwt: ({ token, user }) => {
+            if (user) {
+                token.sub = user.id;
+            }
+            return token;
+        },
+    },
+    secret: process.env.NEXTAUTH_SECRET!,
+    debug: process.env.NODE_ENV === 'development',
 };
 
-// ✅ Correctly export authentication functions
-export const { handlers } = NextAuth(authOptions);
-
-export const auth = () => NextAuth(authOptions);
-
-export { signIn, signOut } from 'next-auth/react'; // ✅ Ensure client-side authentication works
+export const {
+    handlers: { GET, POST },
+    auth,
+} = NextAuth(authOptions);

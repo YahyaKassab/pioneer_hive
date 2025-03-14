@@ -1,13 +1,13 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-    /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
     images: {
         dangerouslyAllowSVG: true,
         remotePatterns: [{ protocol: 'https', hostname: '*' }],
     },
     experimental: {
-        ppr: 'incremental',
+        ppr: true, // Use boolean instead of 'incremental'
+        serverActions: true,
+        optimizePackageImports: ['next-sanity'],
     },
     devIndicators: {
         position: 'bottom-right',

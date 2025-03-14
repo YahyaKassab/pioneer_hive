@@ -31,20 +31,13 @@ export const author = defineType({
             },
         }),
         defineField({
-            name: 'imageUrl',
-            title: 'ImageUrl',
-            type: 'string',
-            // validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
+            name: 'image',
+            title: 'Image',
+            type: 'url',
         }),
         defineField({
             name: 'bio',
             type: 'text',
         }),
     ],
-    preview: {
-        select: {
-            title: 'name',
-            media: 'imageUrl',
-        },
-    },
 });

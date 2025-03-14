@@ -9,6 +9,14 @@ import React, { Suspense } from 'react';
 import markdownit from 'markdown-it';
 import { Skeleton } from '@/components/ui/skeleton';
 import View from '@/components/View';
+// import imageUrlBuilder from '@sanity/image-url';
+// import { SanityClient } from '../../../../sanityClient'; // Ensure you import your configured Sanity client
+
+// const builder = imageUrlBuilder(SanityClient);
+
+// function urlFor(source: string) {
+//     return builder.image(source).url();
+// }
 
 const md = markdownit();
 
@@ -32,7 +40,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             </section>
             <section className="section_container">
                 {post.image ? (
-                    <Image
+                    <img
                         src={post.image}
                         alt="thumbnail"
                         className="w-full h-auto rounded-xl"
@@ -46,9 +54,10 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
                             href={`/user/${post.author?._id}`}
                             className="flex gap-2 items-center mb-3"
                         >
-                            {post.author?.imageUrl ? (
-                                <Image
-                                    src={post.author?.imageUrl}
+                            {post.author?.image ? (
+                                <img
+                                    // src={urlFor(post.author?.image)}
+                                    src={post.author?.image}
                                     alt="avatar"
                                     width={50}
                                     height={50}
